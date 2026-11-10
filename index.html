@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus // Autonomous Intelligence & Edge Synthesis Matrix</title>
+  <meta name="description" content="Next-generation intelligent platform orchestrating autonomous agent swarms, sub-millisecond neural routing, and planetary-scale edge inference.">
+  <meta name="keywords" content="AI, Autonomous Agents, Edge Computing, Machine Learning, Neural Routing, Developer Platform, Nexus">
+  <meta name="author" content="Nexus Core Architecture Team">
+
+  <!-- Open Graph / Facebook / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nexus // Autonomous Intelligence & Edge Synthesis Matrix">
+  <meta property="og:description" content="Deploy sub-millisecond neural pipelines and autonomous multi-agent swarms at planetary scale.">
+  <meta property="og:image" content="favicon.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nexus // Autonomous Intelligence Matrix">
+  <meta name="theme-color" content="#07090e">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Background Interactive Particle Canvas -->
+  <canvas id="bg-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Announcement Bar -->
+  <aside class="top-banner">
+    🚀 <strong>Nexus Core v3.4 Released</strong>: Sub-10ms P99 global routing is now active in 180+ edge zones.
+    <a href="#studio">Try Live Studio →</a>
+  </aside>
+
+  <!-- Sticky Navigation Header -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="#" class="logo" aria-label="Nexus Home">
+        <svg class="logo-icon" viewBox="0 0 64 64" fill="none">
+          <polygon points="32,6 54,19 54,45 32,58 10,45 10,19" stroke="#00f2fe" stroke-width="3" fill="none"/>
+          <polygon points="32,16 46,24 46,40 32,48 18,40 18,24" fill="url(#navNexusGrad)" opacity="0.9"/>
+          <circle cx="32" cy="32" r="5" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="navNexusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00f2fe" />
+              <stop offset="100%" stop-color="#8a2be2" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>NEXUS</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#studio">Live Studio</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#benchmarks">Benchmarks</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Command Palette Trigger -->
+        <button class="cmd-badge" id="cmd-btn" aria-label="Open Command Palette" title="Quick Search (Ctrl+K or ⌘K)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search</span>
+          <kbd>⌘K</kbd>
+        </button>
+
+        <!-- Sound FX Toggle Button -->
+        <button class="btn-icon" id="audio-toggle-btn" aria-label="Toggle Sound Effects" title="Enable/Disable Audio FX">
+          <svg id="audio-icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+          <svg id="audio-icon-off" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <!-- Theme Toggle Button -->
+        <button class="btn-icon" id="theme-btn" aria-label="Toggle Theme" title="Toggle Light / Dark / Cyberpunk Theme">
+          <svg id="theme-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- Primary CTA -->
+        <a href="#studio" class="btn btn-primary btn-sm">Launch Studio</a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Mobile Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>AUTONOMOUS COGNITIVE FABRIC</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Build Without Limits using <br>
+          <span class="gradient-text">Planetary Neural Intelligence</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Nexus orchestrates multi-agent swarms, zero-latency inference meshes, and sovereign AI pipelines. Engineered for engineers building the next era of software.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#studio" class="btn btn-primary">
+            <span>Explore Live Sandbox</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <button class="btn btn-secondary" id="hero-book-btn">
+            <span>Schedule Architecture Review</span>
+          </button>
+        </div>
+
+        <!-- Live Metrics / Counters -->
+        <div class="hero-stats">
+          <div class="glass-card stat-card">
+            <div class="stat-value text-cyan" id="stat-latency">&lt; 9.4ms</div>
+            <div class="stat-label">P99 Edge Latency</div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-value text-purple" id="stat-ops">4.82M</div>
+            <div class="stat-label">Neural Inferences / Sec</div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-value text-emerald" id="stat-uptime">99.999%</div>
+            <div class="stat-label">Uptime Reliability SLA</div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-value" id="stat-nodes">184</div>
+            <div class="stat-label">Global PoP Nodes</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Live Studio Section -->
+    <section class="section" id="studio">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Interactive Playground</span>
+          <h2 class="section-title">Experience the Real-Time Neural Runtime</h2>
+          <p class="section-desc">Test model execution speeds, multi-agent reasoning traces, and telemetry live directly in your browser.</p>
+        </div>
+
+        <div class="studio-box">
+          <!-- Studio Tabs Header -->
+          <div class="studio-tabs">
+            <div class="tab-group" role="tablist">
+              <button class="tab-btn active" data-mode="code" role="tab" aria-selected="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                <span>Code Synthesis</span>
+              </button>
+              <button class="tab-btn" data-mode="swarm" role="tab" aria-selected="false">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M3 12h3M18 12h3M12 3v3M12 18v3"></path></svg>
+                <span>Agent Swarm</span>
+              </button>
+              <button class="tab-btn" data-mode="telemetry" role="tab" aria-selected="false">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span>Mesh Telemetry</span>
+              </button>
+              <button class="tab-btn" data-mode="benchmark" role="tab" aria-selected="false">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>Model Benchmark</span>
+              </button>
+            </div>
+            <div class="window-dots" aria-hidden="true">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+          </div>
+
+          <!-- Studio Control Panel -->
+          <div class="studio-controls">
+            <div class="control-item">
+              <label for="model-select">Active Model:</label>
+              <select id="model-select" class="control-select">
+                <option value="nexus-70b">Nexus-Ultra 70B (Quantized 4-bit)</option>
+                <option value="nexus-omni">Nexus-Omni 3.5 (Multimodal)</option>
+                <option value="nexus-flash">Nexus-Flash 8B (Sub-5ms Edge)</option>
+              </select>
+            </div>
+
+            <div class="control-item">
+              <label for="temp-slider">Creativity (Temp: <span id="temp-val">0.20</span>):</label>
+              <input type="range" id="temp-slider" class="range-slider" min="0" max="1" step="0.05" value="0.2" style="width:120px;">
+            </div>
+
+            <div class="control-item">
+              <button class="btn btn-primary btn-sm" id="run-simulation-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>Run Execution</span>
+              </button>
+              <button class="btn btn-secondary btn-sm" id="copy-output-btn" title="Copy Output to Clipboard">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Studio Editor & Streaming Output Body -->
+          <div class="studio-body">
+            <!-- Left: Prompt / Configuration -->
+            <div class="studio-editor" id="studio-editor-content">
+              <pre><code id="editor-code">// Nexus Runtime Prompt Payload
+import { NexusOrchestrator, SwarmAgent } from "@nexus/core";
+
+const orchestrator = new NexusOrchestrator({
+  region: "global-edge-mesh",
+  maxLatencyMs: 15,
+  zeroKnowledgeEnclave: true
+});
+
+// Initialize multi-agent synthesis pipeline
+const pipeline = orchestrator.createPipeline({
+  agents: ["Architect", "SecurityAuditor", "Optimizer"],
+  streamMode: "token-barge-in"
+});
+
+await pipeline.execute({
+  objective: "Synthesize high-frequency arbitrage validation kernel",
+  targetLanguage: "Rust",
+  verifyMemorySafety: true
+});</code></pre>
+            </div>
+
+            <!-- Right: Live Real-time Streaming Terminal -->
+            <div class="studio-output">
+              <div class="output-header">
+                <span id="output-status">● Ready for Execution</span>
+                <span id="output-metrics">0 tokens • 0.0ms</span>
+              </div>
+              <div class="output-stream" id="output-stream-target">
+Click "Run Execution" to stream live results through the simulated Nexus neural routing matrix...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Grid Section -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Platform Capabilities</span>
+          <h2 class="section-title">Engineered for Planetary Scale</h2>
+          <p class="section-desc">Every layer of the Nexus stack is built from first principles for uncompromising speed, safety, and autonomy.</p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="filter-bar" role="tablist">
+          <button class="filter-pill active" data-filter="all">All Features</button>
+          <button class="filter-pill" data-filter="compute">Neural Compute</button>
+          <button class="filter-pill" data-filter="security">Security & Enclaves</button>
+          <button class="filter-pill" data-filter="orchestration">Swarm Orchestration</button>
+        </div>
+
+        <div class="feature-grid">
+          <!-- Card 1 -->
+          <div class="glass-card feature-card" data-category="compute">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3 class="feature-title">Sub-10ms Global Routing</h3>
+            <p class="feature-desc">Our intelligent routing layer predicts network congestion and directs requests through the optimal physical fiber path, cutting roundtrip latency by up to 74%.</p>
+            <span class="feature-tag">Compute Layer</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card feature-card" data-category="orchestration">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            </div>
+            <h3 class="feature-title">Multi-Agent Swarm Logic</h3>
+            <p class="feature-desc">Coordinate dozens of specialized agents in real-time. Dynamic consensus, automated task decomposition, and conflict resolution built right into the engine.</p>
+            <span class="feature-tag">Orchestration</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card feature-card" data-category="security">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="feature-title">Zero-Knowledge Enclaves</h3>
+            <p class="feature-desc">Inferences occur inside hardware-isolated confidential enclaves (Intel SGX / AMD SEV). Cryptographically proven privacy where no model provider can peek at your raw data.</p>
+            <span class="feature-tag">Security & Compliance</span>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="glass-card feature-card" data-category="compute">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <h3 class="feature-title">Adaptive Context Matrices</h3>
+            <p class="feature-desc">Seamless memory across 10 million tokens. Long-term episodic memory indexing allows agents to maintain conversational coherence across months of runtime.</p>
+            <span class="feature-tag">Neural Memory</span>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="glass-card feature-card" data-category="security">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
+            <h3 class="feature-title">Self-Healing Infrastructure</h3>
+            <p class="feature-desc">Automated failover with autonomous anomaly remediation. If any edge pod degrades, traffic is re-routed in under 2 milliseconds without losing socket connections.</p>
+            <span class="feature-tag">High Availability</span>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="glass-card feature-card" data-category="orchestration">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+            </div>
+            <h3 class="feature-title">Universal Polyglot SDKs</h3>
+            <p class="feature-desc">First-class bindings for TypeScript, Python, Rust, Go, Swift, and C++. One unified API with type-safe streaming hooks and built-in telemetry tracing.</p>
+            <span class="feature-tag">Developer Experience</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Architecture Pipeline -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">System Anatomy</span>
+          <h2 class="section-title">End-to-End Pipeline Architecture</h2>
+          <p class="section-desc">Click any node below to inspect real-time data transformations, cryptographic validation, and edge dispatching.</p>
+        </div>
+
+        <div class="glass-card arch-pipeline">
+          <div class="pipeline-nodes">
+            <!-- Node 1 -->
+            <div class="node-card active" data-node="ingress">
+              <div class="node-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1"></path></svg>
+              </div>
+              <div class="node-name">1. Edge Ingress</div>
+              <div class="node-latency">1.1ms • Anycast BGP</div>
+            </div>
+
+            <!-- Node 2 -->
+            <div class="node-card" data-node="router">
+              <div class="node-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              </div>
+              <div class="node-name">2. Neural Router</div>
+              <div class="node-latency">2.3ms • Dynamic Path</div>
+            </div>
+
+            <!-- Node 3 -->
+            <div class="node-card" data-node="swarm">
+              <div class="node-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <div class="node-name">3. Swarm Core</div>
+              <div class="node-latency">4.8ms • Multi-Agent</div>
+            </div>
+
+            <!-- Node 4 -->
+            <div class="node-card" data-node="enclave">
+              <div class="node-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <div class="node-name">4. ZK Enclave</div>
+              <div class="node-latency">0.8ms • Verified SGX</div>
+            </div>
+
+            <!-- Node 5 -->
+            <div class="node-card" data-node="egress">
+              <div class="node-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div class="node-name">5. Stream Egress</div>
+              <div class="node-latency">0.4ms • SSE / WebSocket</div>
+            </div>
+          </div>
+
+          <!-- Interactive Node Inspector Drawer -->
+          <div class="node-details-box" id="node-details-panel">
+            <div>
+              <h4 id="node-detail-title" class="text-cyan" style="font-size:1.15rem; margin-bottom:6px;">1. Edge Ingress Gateway</h4>
+              <p id="node-detail-desc" style="color:var(--text-secondary); max-width:650px;">Global Anycast network spans 180+ Internet Exchange Points. TLS 1.3 termination occurs at the edge nearest the client, stripping transport handshake overhead.</p>
+            </div>
+            <div class="badge-pill" style="margin-bottom:0;" id="node-detail-status">
+              <span class="badge-dot"></span>
+              <span id="node-detail-spec">200 Gbps Backbone Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real-Time Benchmarks & ROI Calculator -->
+    <section class="section" id="benchmarks">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Telemetry & Impact</span>
+          <h2 class="section-title">Calculate Your Latency & Cost Savings</h2>
+          <p class="section-desc">Compare real-world benchmarks and compute how much Nexus reduces token overhead and operational expense.</p>
+        </div>
+
+        <div class="calc-wrapper">
+          <!-- Slider Controls -->
+          <div class="glass-card calc-sliders">
+            <h3 style="margin-bottom:24px;">Workload Configuration</h3>
+            
+            <div class="calc-row">
+              <div class="calc-label-bar">
+                <span>Monthly Request Volume:</span>
+                <span class="text-cyan" id="volume-val">5,000,000</span>
+              </div>
+              <input type="range" id="volume-slider" class="range-slider" min="500000" max="50000000" step="500000" value="5000000">
+            </div>
+
+            <div class="calc-row">
+              <div class="calc-label-bar">
+                <span>Average Context Size (Tokens):</span>
+                <span class="text-purple" id="context-val">8,192 tokens</span>
+              </div>
+              <input type="range" id="context-slider" class="range-slider" min="1024" max="64000" step="1024" value="8192">
+            </div>
+
+            <div class="calc-row">
+              <div class="calc-label-bar">
+                <span>Legacy Cloud Provider Cost:</span>
+                <span id="cloud-val">$0.003 / 1k tokens</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Results Box -->
+          <div class="glass-card calc-results">
+            <span class="section-badge" style="color:var(--accent-emerald);">Estimated Monthly Savings</span>
+            <div class="metric-big gradient-text" id="savings-val">$18,450</div>
+            <p style="color:var(--text-secondary); margin-bottom:20px;">
+              Nexus Quantized Routing saves up to <strong>62% in raw API compute</strong> and cuts user-perceived P99 latency by <strong>185 milliseconds</strong>.
+            </p>
+            <div style="display:flex; justify-content:center; gap:20px; font-size:0.88rem;">
+              <div>
+                <span style="display:block; color:var(--text-muted);">P99 Time Saved</span>
+                <strong class="text-cyan">~148 hrs / mo</strong>
+              </div>
+              <div>
+                <span style="display:block; color:var(--text-muted);">Cache Hit Ratio</span>
+                <strong class="text-emerald">94.2%</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Transparent Pricing</span>
+          <h2 class="section-title">Scales from Hacker to Enterprise</h2>
+          <p class="section-desc">Transparent pricing with no hidden bandwidth charges or egress penalties.</p>
+        </div>
+
+        <!-- Monthly / Annual Switch -->
+        <div class="billing-switch">
+          <span class="switch-label active" id="label-monthly">Monthly Billing</span>
+          <button class="toggle-btn" id="billing-toggle" aria-label="Toggle Annual Billing"></button>
+          <span class="switch-label" id="label-annual">Annual Billing</span>
+          <span class="save-chip">Save 20%</span>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Tier 1: Developer -->
+          <div class="glass-card pricing-card">
+            <h3 class="plan-name">Developer</h3>
+            <p class="plan-desc">For indie builders and prototype testing.</p>
+            <div class="plan-price">
+              <span id="price-starter">$0</span>
+              <span class="plan-period">/ month</span>
+            </div>
+            <ul class="plan-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Up to 100,000 requests/mo</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>5 Concurrent agent workers</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Community Discord support</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Standard Edge routing</span>
+              </li>
+            </ul>
+            <button class="btn btn-secondary plan-cta" data-plan="Developer">Start Free</button>
+          </div>
+
+          <!-- Tier 2: Pro (Featured) -->
+          <div class="glass-card pricing-card featured">
+            <span class="featured-ribbon">Most Popular</span>
+            <h3 class="plan-name text-cyan">Production Pro</h3>
+            <p class="plan-desc">For scaleups and production applications.</p>
+            <div class="plan-price">
+              <span id="price-pro">$79</span>
+              <span class="plan-period">/ month</span>
+            </div>
+            <ul class="plan-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>5,000,000 requests/mo</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Unlimited autonomous agent swarms</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Sub-10ms P99 guaranteed SLA</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Zero-Knowledge SGX Enclaves</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Priority 24/7 Slack & Email channel</span>
+              </li>
+            </ul>
+            <button class="btn btn-primary plan-cta" data-plan="Pro">Deploy Pro Now</button>
+          </div>
+
+          <!-- Tier 3: Enterprise -->
+          <div class="glass-card pricing-card">
+            <h3 class="plan-name">Enterprise Mesh</h3>
+            <p class="plan-desc">Dedicated infrastructure, air-gapped clusters.</p>
+            <div class="plan-price">
+              <span id="price-ent">Custom</span>
+              <span class="plan-period">/ month</span>
+            </div>
+            <ul class="plan-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Bespoke high-volume capacity</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>On-premise / Private VPC deployment</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>SOC2 Type II, HIPAA, ISO27001 ready</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Dedicated Principal Engineer support</span>
+              </li>
+            </ul>
+            <button class="btn btn-secondary plan-cta" data-plan="Enterprise">Contact Architects</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Trusted Globally</span>
+          <h2 class="section-title">Endorsed by Visionary Engineers</h2>
+          <p class="section-desc">Read how leading engineering teams transitioned their mission-critical workloads to Nexus.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Review 1 -->
+          <div class="glass-card testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote-text">"Nexus allowed our trading team to run decentralized multi-agent verification in under 8 milliseconds. It replaced an entire cluster of GPU servers."</p>
+            <div class="author-box">
+              <div class="author-avatar">AZ</div>
+              <div class="author-info">
+                <h4>Alexei Zakhary</h4>
+                <p>CTO, Hyperion Quantitative Capital</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="glass-card testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote-text">"The confidential SGX enclave feature was the only solution that allowed us to run healthcare diagnostic AI while adhering strictly to European patient data regulations."</p>
+            <div class="author-box">
+              <div class="author-avatar">MC</div>
+              <div class="author-info">
+                <h4>Dr. Mira Chen</h4>
+                <p>Head of AI Systems, BioSyn Health</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="glass-card testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote-text">"The developer experience is simply second to none. We migrated our entire autonomous coding agent swarm to Nexus in an afternoon. Token caching is incredible."</p>
+            <div class="author-box">
+              <div class="author-avatar">TL</div>
+              <div class="author-info">
+                <h4>Tariq Larsson</h4>
+                <p>Lead Infrastructure Architect, DevMesh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Answers & Clarity</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">Everything you need to know about Nexus architecture, pricing, and deployment models.</p>
+        </div>
+
+        <div class="faq-list">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How does Nexus achieve sub-10ms latency across the globe?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Nexus operates on an Anycast BGP overlay network directly integrated with over 180 Tier-1 internet exchange points. Instead of bouncing requests through central hyperscaler regions, models are quantized and served from memory-mapped NVMe storage directly at edge nodes within 5ms of 92% of the world's connected population.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I run custom proprietary models or fine-tunes?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. Nexus natively supports custom LoRA weights, GGUF/AWQ quantized models, and full HuggingFace or custom safetensors checkpoints. Custom model weights can be uploaded directly into your private encrypted enclave.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What guarantees zero-knowledge data privacy?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              All inference workloads execute inside AMD SEV-SNP and Intel SGX hardware-enforced trusted execution environments (TEEs). Cryptographic remote attestation guarantees that memory encryption keys are isolated from both host operators and hypervisors.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How does multi-agent swarm orchestration work?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              The Nexus Swarm Engine implements a lock-free event-sourcing coordinator. Agents communicate via micro-channels with automated priority queues, state snapshots, and rollback mechanisms, eliminating deadlocks and token loops.
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What SDKs and languages are supported?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              We provide official, idiomatic SDKs for TypeScript / Node.js, Python 3.10+, Rust, Go, Swift, and C++. We also offer an OpenAI-compatible REST endpoint for plug-and-play migration with existing libraries like LangChain, AutoGen, and LlamaIndex.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="section" style="padding-top:20px;">
+      <div class="container">
+        <div class="cta-box">
+          <span class="badge-pill">
+            <span class="badge-dot"></span>
+            <span>INSTANT ACCESS</span>
+          </span>
+          <h2 class="section-title" style="margin-top:16px;">Ready to Elevate Your Intelligent Stack?</h2>
+          <p class="section-desc" style="max-width:580px; margin:0 auto;">
+            Join over 150,000 engineers building autonomous, sovereign, low-latency AI applications.
+          </p>
+
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" class="input-field" placeholder="Enter your work email address" required aria-label="Work Email Address">
+            <button type="submit" class="btn btn-primary">
+              <span>Request Developer Access</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom:14px;">
+            <svg class="logo-icon" viewBox="0 0 64 64" fill="none" style="width:28px; height:28px;">
+              <polygon points="32,6 54,19 54,45 32,58 10,45 10,19" stroke="#00f2fe" stroke-width="3" fill="none"/>
+              <polygon points="32,16 46,24 46,40 32,48 18,40 18,24" fill="#00f2fe" opacity="0.9"/>
+            </svg>
+            <span>NEXUS</span>
+          </div>
+          <p style="color:var(--text-secondary); max-width:320px; line-height:1.6; margin-bottom:16px;">
+            The autonomous cognitive infrastructure layer powering next-generation intelligent software.
+          </p>
+          <div class="status-pill">
+            <span class="status-indicator"></span>
+            <span>All Systems Normal • Mesh Edge v3.4.1</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul>
+            <li><a href="#features">Feature Matrix</a></li>
+            <li><a href="#studio">Live Studio</a></li>
+            <li><a href="#architecture">Architecture Flow</a></li>
+            <li><a href="#benchmarks">Telemetry & Speed</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <ul>
+            <li><a href="https://github.com/nxtzenmaker-max/eager-nexus-621" target="_blank" rel="noopener">GitHub Repository</a></li>
+            <li><a href="#pricing">Pricing Plans</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#studio">API Reference</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Security & Trust</h5>
+          <ul>
+            <li><a href="#architecture">Confidential Enclaves</a></li>
+            <li><a href="#architecture">SOC2 Type II</a></li>
+            <li><a href="#architecture">Privacy Shield</a></li>
+            <li><a href="#architecture">Zero-Knowledge Attestation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Nexus Systems Inc. Distributed globally across high-speed edge clusters.</div>
+        <div>Engineered with precision for autonomous intelligence.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Command Palette Modal -->
+  <div class="modal-overlay" id="cmd-modal-overlay" role="dialog" aria-modal="true" aria-label="Command Palette">
+    <div class="cmd-modal">
+      <div class="cmd-input-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="cmd-input" class="cmd-input" placeholder="Type a command or search section..." autocomplete="off">
+        <kbd class="cmd-shortcut">ESC</kbd>
+      </div>
+      <ul class="cmd-list" id="cmd-list">
+        <!-- Injected via JavaScript -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Contact / Booking Modal -->
+  <div class="modal-overlay" id="booking-modal-overlay" role="dialog" aria-modal="true" aria-label="Book Architecture Review">
+    <div class="cmd-modal" style="padding:28px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h3 style="font-size:1.3rem;">Schedule Architecture Review</h3>
+        <button id="close-booking-modal" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:1.4rem;">&times;</button>
+      </div>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:20px;">
+        Connect directly with a Nexus Principal Systems Architect to audit your latency bottlenecks and design your custom multi-agent edge pipeline.
+      </p>
+      <form id="booking-form" style="display:flex; flex-direction:column; gap:14px;">
+        <input type="text" class="input-field" placeholder="Your Full Name" required>
+        <input type="email" class="input-field" placeholder="Work Email" required>
+        <input type="text" class="input-field" placeholder="Company / Project Name" required>
+        <textarea class="input-field" rows="3" placeholder="Briefly describe your workload (target latency, concurrent users, models)..." style="border-radius:12px; resize:none;"></textarea>
+        <button type="submit" class="btn btn-primary" style="margin-top:8px;">Confirm Booking Request</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript Application -->
+  <script src="app.js"></script>
+</body>
+</html>
